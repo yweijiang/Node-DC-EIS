@@ -634,6 +634,11 @@ def print_meminfo():
         heapUsedlist.append(result["memoryInfo"]["heapUsed"])
     time.sleep(float(memstat_interval))
   elapsed_time = time.time() - start_time
+  #making sure the lists are the same length to avoid writing errors because Chakracore is currently reporting no heap used info
+  while len(heapUsedlist) < len(rss_list):
+    heapUsedlist.append(0)
+  while len(heapTotlist) < len(rss_list):
+    heapTotlist.append(0)
   with open(os.path.join(os.path.join(results_dir,directory),directory+"-"+memlogfile+".csv"), 'wb') as f:
     writer = csv.writer(f)
     writer.writerows(izip(list(range(0, int(elapsed_time), 1)),rss_list,heapTotlist,heapUsedlist))    
