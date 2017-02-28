@@ -757,22 +757,22 @@ def post_process(temp_log,output_file):
     #hardware details 
     if result['hw']:
       print >> processed_file, "====Hardware Details===="
-      if result['hw']['architecture']:
+      if 'architecture' in result['hw']:
         architecture = result['hw']['architecture']
         print >> processed_file, "Architecture: " +str(architecture)
-      if result['hw']['endianness']:
+      if 'endianness' in result['hw']:
         endianness = result['hw']['endianness'] 
         print >> processed_file, "Endianness: " +str(endianness)
-      if result['hw']['totalmem']:
+      if 'totalmem' in result['hw']:
         totalmem = result['hw']['totalmem'] 
         print >> processed_file, "Total memory: " +str(totalmem) +" bytes"
-      if result['hw']['freemem']:
+      if 'freemem' in result['hw']:
         freemem = result['hw']['freemem']
-        print >> processed_file, "Free mempry available: " +str(freemem)+" bytes"
-      if result['hw']['model']:
+        print >> processed_file, "Free memory available: " +str(freemem)+" bytes"
+      if 'model' in result['hw']:
         model = result['hw']['model']
         print >> processed_file, "CPU model: " +str(model)
-      if result['hw']['speed']:
+      if 'speed' in result['hw']:
         speed = result['hw']['speed'] 
         print >> processed_file, "CPU speed: " +str(speed) +" MHz"
       systime = result['hw']['sys'] 
@@ -788,48 +788,51 @@ def post_process(temp_log,output_file):
     #software details
     if result['sw']:
       print >> processed_file, "\n====Operating System Details===="
-      if result['sw']['platform']:
+      if 'platform' in result['sw']:
         platform = result['sw']['platform'] 
         print >> processed_file, "Operating System Platform: " +str(platform) 
-      if result['sw']['release']:
+      if 'release' in result['sw']:
         release = result['sw']['release']
         print >> processed_file, "Operating System Release: " +str(release)
-      if result['sw']['uptime']:
+      if 'uptime' in result['sw']:
         uptime = result['sw']['uptime'] 
         print >> processed_file, "System uptime: " +str(uptime)
-      if result['sw']['type']:
+      if 'type' in result['sw']:
         ostype = result['sw']['type'] 
         print >> processed_file, "Operating System type: " +str(ostype)
     #version details
     if result['version']:
       print >> processed_file, "\n====Version Details of Node.js and dependencies===="
-      if result['version']['node']:
+      if 'node' in result['version']:
         node_ver = result['version']['node']
         print >> processed_file, "Node version: " +str(node_ver)
-      if result['version']['zlib']:
+      if 'zlib' in result['version']:
         zlib_ver = result['version']['zlib'] 
         print >> processed_file, "Zlib version: " +str(zlib_ver)
-      if result['version']['v8']:
+      if 'v8' in result['version']:
         v8_ver = result['version']['v8']
         print >> processed_file, "V8 version: " +str(v8_ver)
-      if result['version']['uv']:
+      if 'uv' in result['version']:
         uv_ver = result['version']['uv'] 
         print >> processed_file, "UV version: " +str(uv_ver)
-      if result['version']['http_parser']:
+      if 'http_parser' in result['version']:
         http_parser_ver = result['version']['http_parser']
         print >> processed_file, "Http Parser version: " +str(http_parser_ver) 
-      if result['version']['openssl']:
+      if 'openssl' in result['version']:
         openssl_ver = result['version']['openssl'] 
         print >> processed_file, "OpenSSL version: " +str(openssl_ver)
-      if result['version']['ares']:
+      if 'ares' in result['version']:
         ares_ver = result['version']['ares'] 
         print >> processed_file, "Ares version: " +str(ares_ver)
-      if result['version']['modules']:
+      if 'modules' in result['version']:
         modules_ver = result['version']['modules'] 
         print >> processed_file, "Modules version: " +str(modules_ver)
-      if result['version']['icu']:
+      if 'icu' in result['version']:
         icu_ver = result['version']['icu'] 
         print >> processed_file, "ICU version: " +str(icu_ver)
+      if 'chakracore' in result['version']:
+        chakracore_ver = result['version']['chakracore'] 
+        print >> processed_file, "Chakracore version: " +str(chakracore_ver)
   print >> processed_file, "\n====Client information===="
   for row in csvReader:
     if "MT" in row[0]:
